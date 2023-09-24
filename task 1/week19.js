@@ -2,7 +2,13 @@
 //Создайте функцию makeOne, которая выполняет GET-запрос по адресу https://catfact.ninja/fact, используя функцию fetch(). Результат должен быть выведен в консоль. Функция вызывается по нажатию кнопки "Задание 1".
 
 function makeOne() {
-	//Ваш код
+	return fetch('https://catfact.ninja/fact')
+		.then((res) => {
+			console.log(res);
+		})
+		.catch((err) => {
+			console.log('Произошла ошибка', err);
+		});
 }
 
 document.querySelector('.b-1').addEventListener('click', makeOne);
