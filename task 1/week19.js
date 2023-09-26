@@ -103,7 +103,11 @@ document.querySelector('.b-6').addEventListener('click', makeSix);
 //Создайте функцию makeSeven, которая делает запрос на адрес https://api.agify.io/. Выведите в консоль ответ с сервера, чтобы убедиться, что получили данные.
 
 function makeSeven() {
-	//Ваш код
+	fetch('https://api.agify.io/')
+		.then((response) => response.json())
+		.catch((err) => {
+			console.log('Произошла ошибка', err);
+		});
 }
 
 document.querySelector('.b-7').addEventListener('click', makeSeven);
@@ -112,7 +116,11 @@ document.querySelector('.b-7').addEventListener('click', makeSeven);
 //Создайте функцию makeEight, которая отправляет GET-запрос на адрес https://api.agify.io/ с параметром ?name=alice.
 
 function makeEight() {
-	//Ваш код
+	fetch('https://api.agify.io?name=alice')
+		.then((response) => response.json())
+		.catch((err) => {
+			console.log('Произошла ошибка', err);
+		});
 }
 
 document.querySelector('.b-8').addEventListener('click', makeEight);
@@ -126,7 +134,7 @@ function makeNine() {
 		.then((response) => response.json())
 		.then((data) => {
 			const resultElement = document.getElementById('result9');
-			//Ваш код
+			resultElement.textContent = JSON.stringify(data);
 		})
 		.catch((error) => {
 			console.error('Ошибка:', error);
@@ -139,7 +147,17 @@ document.querySelector('.b-9').addEventListener('click', makeNine);
 //Создайте функцию makeTen, которая делает запрос на адрес https://dog.ceo/api/breeds/image/random. Полученное изображение выведите после элемента с id "result10".
 
 function makeTen() {
-	//Ваш код
+	fetch('https://dog.ceo/api/breeds/image/random')
+		.then((response) => response.json())
+		.then((data) => {
+			const resultElement10 = document.getElementById('result10');
+			const img10 = document.createElement('img');
+			img10.src = data.message;
+			resultElement10.appendChild(img10);
+		})
+		.catch((err) => {
+			console.log('Произошла ошибка', err);
+		});
 }
 
 document.querySelector('.b-10').addEventListener('click', makeTen);
